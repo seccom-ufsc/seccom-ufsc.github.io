@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SECCOM 2025</title>
+
+  <link rel="icon" type="image/x-icon" href="./img/logo.webp">
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/main.min.css' rel='stylesheet' />
+  <link rel="stylesheet" href="style/style.css">
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Full Calendar -->
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.15/index.global.min.js'></script>
+
+  <!-- Carousel -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+  <script src="script/matrix.js" defer></script>
+  <script src="script/calendar.js" defer></script>
+  <script src="script/speakersCarousel.js" type="module" defer></script>
+</head>
+
+<body>
+  <!-- #region Header -->
+  <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #002218;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <div class="d-flex align-items-center">
+          <img src="img/logo.webp" alt="Logo" height="48" class="d-inline-block align-text-top">
+          <span>SECCOM</span>
+        </div>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav me-4 gap-2">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#program">Programação</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#speakers">Palestrantes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contato">Contato</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Trocar o link do botão para o form correto-->
+      <div>
+        <a href="https://forms.gle/PLb7WzpAM72rsiMT9" class="btn btn-primary">Inscreva-se</a>
+      </div>
+
+    </div>
+  </nav>
+  <!-- #endregion -->
+
+  <!-- <canvas id="canv"></canvas> -->
+  <main data-bs-spy="scroll" data-bs-target="#navbarNav">
+    <!-- #region INICIO -->
+    <section id="inicio" class="container">
+      <div class="row" style="height: 100%;">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 d-flex flex-column justify-content-around">
+          <div></div>
+          <div>
+            <h1 class="display-1 d-flex justify-content-between">
+              <span>SECCOM</span><span class="text-primary-emphasis">2025</span>
+            </h1>
+            <!-- Trocar data aqui -->
+            <p class="lead">
+              Semana Acadêmica da Computação e Sistemas<br>
+              De 29 de Setembro a 3 de Outubro
+            </p>
+            <p>
+              A SECCOM é um evento acadêmico que visa incrementar a experiência universitária das graduações em Ciência da Computação e Sistemas de Informação, trazendo palestras e oficinas de conteúdos além dos vistos durante a graduação. O tema desta edição é <br><span class="text-primary-emphasis">Baixo Nível, Trabalho e Ética</span>.
+            </p>
+            <!-- <p>
+              Você pode assistir as transmissões ao vivo no <a href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw" target="_blank">canal oficial da SECCOM no YouTube</a>.
+            </p> -->
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <!-- Trocar link do formulário aqui -->
+            <a href="https://forms.gle/PLb7WzpAM72rsiMT9" class="btn btn-primary btn-lg">Inscreva-se</a>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div class="row">
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region PROGRAMACAO -->
+    <section id="program" class="container mb-5 pb-3">
+
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <h2>Programação</h2>
+        </div>
+        <div id="calendar" class="rounded p-3">
+          <!-- Calendar -->
+        </div>
+
+        <!-- Bootstrap Modal -->
+        <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h6 class="modal-title" id="eventModalLabel">Detalhes do evento</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div id="modal-event-title">
+                  <!-- <div class="mb-2 mt-3"> -->
+                  <!-- <strong>Título</strong> -->
+                  <h3 id="section-title"></h3>
+                  <!-- </div> -->
+                </div>
+                <div id="modal-event-description">
+                  <div class="mb-2 mt-3">
+                    <strong>Descrição</strong>
+                  </div>
+                  <div id="section-description" class="event-section"></div>
+                </div>
+                <div id="modal-event-location">
+                  <div class="mb-2 mt-3">
+                    <strong>Local</strong>
+                  </div>
+                  <div id="section-location" class="event-section"></div>
+                </div>
+                <div class="mb-2 mt-3">
+                  <div id="modal-event-start">
+                    <strong>Início: </strong><span id="section-start"></span>
+                  </div>
+                  <div id="modal-event-end">
+                    <strong>Fim: </strong><span id="section-end"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <a href="#" id="add-to-calendar" class="btn btn-primary" target="_blank">Adicionar ao meu calendário</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- #region PALESTRANTES -->
+    <section id="speakers" class="container mb-5 pb-3">
+      <h2>Palestrantes</h2>
+      <div id="carrossel" class="carrossel"></div>
+      <div class="modal modal-lg fade" id="speakerModal" tabindex="-1" aria-labelledby="speakerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="speakerModalLabel">
+                Modal title
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-center">
+                <img id="modal-speaker-photo" />
+              </div>
+              <div id="modal-speaker-abstract">
+                <div class="mb-2 mt-3">
+                  <strong>Sobre mim</strong>
+                </div>
+                <div id="speaker-abstract"></div>
+              </div>
+              <div id="modal-speaker-lectures">
+                <div class="mb-2 mt-3">
+                  <strong>Eventos</strong>
+                </div>
+                <ul id="speaker-events"></ul>
+              </div>
+            </div>
+            <div id="modal-footer" class="modal-footer">
+              <p style="margin-right: auto;"><strong>Contatos:</strong></p>
+              <div id="contact-list" class="contact-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- #endregion -->
+
+    <!-- Adicionar/Remover cards de eventos aqui -->
+    <!-- #region EVENTOS -->
+    <section id="eventos" class="container d-flex align-items-center">
+      <div class="row">
+        <!-- <div class="col-lg-2"></div> -->
+        <div class="col-lg">
+          <h2>Formulários</h2>
+
+          <p class="mb-4">
+            Abaixo são listados os eventos da SECCOM 2025 com <i>links</i> para formulários de inscrição. Clique para ver suas descrições e participe!
+          </p>
+
+          <div class="card">
+            <div class="card-header">
+              <!-- #region Nav Header -->
+              <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Inscrição</button>
+                </li>
+              </ul>
+              <!-- #endregion Nav Header -->
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                <!-- #region Card Inscrição -->
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Inscrição na SECCOM</h5>
+                  <p class="card-text">
+                    Informe seus dados para receber o certificado de participação da SECCOM. Esse certificado será emitido apenas caso você realmente participe dos eventos.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> Dependências do INE/CTC.
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar da SECCOM?</strong>
+                  </p>
+                  <ol>
+                    <li>Preencha o formulário de inscrição, disponível no botão abaixo.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/PLb7WzpAM72rsiMT9" class="btn btn-primary" target="_blank">
+                      Quero me inscrever na SECCOM!
+                    </a>
+                  </div>
+                </div>
+                <!-- #endregion Card Inscrição -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- #endregion EVENTOS -->
+
+    <!-- #region PATROCINADORES -->
+    <section id="contato" class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 30svh;">
+      <h2>Patrocinadores</h2>
+
+      <!-- Primeira linha de patrocinadores -->
+      <div class="mt-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
+          <div class="col d-flex justify-content-center" style="max-width: 900px;">
+            <a href="https://www.instagram.com/calicoufsc/" target="_blank">
+              <img src="img/partners/logo_calico.png" alt="CALICO" class="img-fluid img-thumbnail">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda linha de patrocinadores -->
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-2 justify-content-center">
+      </div>
+    </section>
+    <!-- #endregion -->
+
+
+    <!-- #region CONTATO -->
+    <section id="contato" class="container d-flex flex-column justify-content-center" style="min-height: 30svh;">
+      <h2>Quer falar com a gente?</h2>
+      <div class="contact-row">
+
+        <a href="https://www.facebook.com/seccom.ufsc" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-facebook"></i>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/seccom.ufsc/" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-instagram"></i>
+          </div>
+        </a>
+        <a href="mailto:seccom.ufsc@gmail.com" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+        </a>
+        <a href="https://github.com/seccom-ufsc/" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-github"></i>
+          </div>
+        </a>
+        <a href="https://discord.gg/zTmGqsh" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-discord"></i>
+          </div>
+        </a>
+        <a href="https://t.me/seccomufsc" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-telegram"></i>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw" target="_blank">
+          <div class="contact-card">
+            <i class="bi bi-youtube"></i>
+          </div>
+        </a>
+
+      </div>
+    </section>
+    <!-- #endregion -->
+  </main>
+
+  <footer></footer>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.js"></script>
+</body>
+
+</html>

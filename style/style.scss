@@ -1,0 +1,269 @@
+// Variable overrides go here!
+$body-bg-dark: #00140e;
+
+$primary: #4d9b44;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+
+body {
+  scroll-behavior: smooth;
+  font-family: "Fira Code", "Roboto Mono", monospace;
+}
+
+section {
+  scroll-margin-top: 80px;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+
+  &#inicio {
+    height: calc(100svh - 74px);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+}
+
+canvas#canv {
+  display: block;
+  width: 100%;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.contact-row {
+  margin: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-card,
+.speaker-contact-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  background-color: $primary;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  i {
+    font-size: 3rem;
+    color: white;
+  }
+}
+
+div.speaker-contact-card {
+  width: 3rem;
+  height: 3rem;
+}
+
+footer {
+  margin-top: 2rem;
+  background-color: $primary;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  height: 5rem;
+}
+
+/* FullCalendar */
+
+.fc-col-header-cell-cushion {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.fc-timegrid-slot {
+  height: 30px !important; /* Adjust the height of each time slot */
+}
+
+/* Ajuste de cores do dia atual */
+.fc-day-today {
+  background-color: $primary;
+}
+.fc .fc-timegrid-col.fc-day-today {
+  background-color: #2e2e5e44;
+}
+/* Ajuste de cores do evento */
+.fc-v-event {
+  background-color: $primary;
+  border: 2px solid $primary;
+}
+/* Ajuste de altura do calendário */
+.fc-view-harness.fc-view-harness-active {
+  height: 695px !important;
+}
+/* Ajuste nos botões */
+.fc-button {
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+.fc-button-active {
+  border: 2px solid white !important;
+}
+/* Ajustes no range de dias da semana */
+h2#fc-dom-1.fc-toolbar-title {
+  text-align: center;
+  padding: 5px;
+}
+@media screen and (max-width: 767px) {
+  h2#fc-dom-1.fc-toolbar-title {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 523px) {
+  h2#fc-dom-1.fc-toolbar-title {
+    font-size: 15px;
+  }
+}
+
+/* Modal de detalhamento do evento */
+div.event-section {
+  padding: 10px;
+  border: 1px solid white;
+}
+
+/* Carrosel */
+
+.slick-slide > div {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+div.carrossel-item {
+  padding: 10px;
+}
+
+.main-bg-color {
+  background-color: $primary;
+
+  &:focus {
+    background-color: $primary;
+  }
+}
+
+.main-border-color {
+  border-color: white;
+}
+
+.carrossel {
+  font-family: "Roboto Mono", monospace;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+
+.carrossel-item {
+  margin: 1rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  > img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+#speakerModal {
+  #modal-speaker-abstract,
+  #modal-speaker-lectures {
+    padding: 1rem;
+    // padding-top: 0.5rem;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.3);
+  }
+  #modal-speaker-lectures {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  #modal-speaker-photo {
+    display: block;
+    width: 30%;
+    height: auto;
+  }
+}
+
+.modal-footer {
+  .contact-list {
+    display: flex;
+    gap: 4px;
+    a {
+      display: block;
+      width: 50px;
+      height: 50px;
+      color: white;
+
+      &.disabled {
+        pointer-events: none;
+        background-color: #2e2e5e22;
+
+        > div {
+          background-color: #2e2e5e22;
+        }
+
+        i {
+          color: gray;
+        }
+      }
+    }
+
+    i {
+      font-size: 30px;
+    }
+  }
+}
+
+// .palest-contact > a {
+//   width: 100%;
+//   height: 100%;
+// }
+
+// a#palest-contect-email, a#palest-contect-github {
+//   display: block;
+//   width: 50px;
+//   height: 50px;
+//   color: white;
+// }
+
+// a#palest-contect-email>div>i, a#palest-contect-github>div>i {
+//   font-size: 30px;
+// }
+
+footer {
+  margin-top: 2rem;
+  background-color: $primary;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  height: 5rem;
+}
+
+// Icone do lattes
+.bi-lattes {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url("./../img/Lattes.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: invert(100%);
+}

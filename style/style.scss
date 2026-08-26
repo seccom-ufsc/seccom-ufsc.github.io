@@ -1,7 +1,7 @@
 // Variable overrides go here!
-$body-bg-dark: #00140e;
+$body-bg-dark: #1b4f8c;
 
-$primary: #4d9b44;
+$primary: #a566ff;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
@@ -10,7 +10,7 @@ $primary: #4d9b44;
 
 body {
   scroll-behavior: smooth;
-  font-family: "Fira Code", "Roboto Mono", monospace;
+  font-family: "Press Start 2P", "Roboto Mono", monospace;
 }
 
 section {
@@ -266,4 +266,27 @@ footer {
   background-size: contain;
   background-repeat: no-repeat;
   filter: invert(100%);
+}
+
+.aurora-gradient {
+  position: fixed;
+  z-index: -1000;
+
+  width: 100%;
+  height: 100vh;
+  /* Cor de fundo base (Azul escuro profundo) */
+  background-color: #1b1d52;
+
+  /* Manchas de cor posicionadas nos cantos e centro */
+  background-image: 
+    /* Mancha verde brilhante no canto inferior esquerdo */
+    radial-gradient(circle at 10% 85%, #4ade9e 0%, transparent 45%),
+    /* Mancha azul ciano no topo direito */
+    radial-gradient(circle at 80% 15%, #9ce8ff 0%, transparent 40%),
+    /* Tom azul médio no meio/esquerda */
+    radial-gradient(circle at 25% 35%, #3f79e9 0%, transparent 50%),
+    /* Roxo intenso no canto inferior direito */
+    radial-gradient(circle at 85% 75%, #491f95 0%, transparent 55%),
+    /* Azul escuro vibrante para transição no centro */
+    radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 65%);
 }

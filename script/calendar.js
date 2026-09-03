@@ -1,3 +1,16 @@
+// Layouts do cabeçalho centralizados
+const desktopHeader = {
+  left: "prev,next today",
+  center: "title",
+  right: "timeGridWeek,timeGridDay",
+};
+
+const mobileHeader = {
+  left: "prev,next",
+  center: "title",
+  right: "today",
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
@@ -5,23 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
     locale: "pt-br",
     timeFormat: "HH:mm",
     themeSystem: "bootstrap5",
-    initialView: "timeGridWeek",
+    initialView: isMobile() ? "listDay" : "timeGridWeek",
+    headerToolbar: isMobile() ? mobileHeader : desktopHeader,
     validRange: {
       // Trocar a data do calendário aqui, é utilizado intervalo aberto
-      start: "2025-09-28",
-      end: "2025-10-04",
+      start: "2026-10-18",
+      end: "2026-10-24",
     },
     slotMinTime: "09:00:00",
     slotMaxTime: "20:00:00",
-    googleCalendarApiKey: "AIzaSyAo0eHM7AxQS0v4HZ01CwXdvbq4h-_ZCS4",
+    googleCalendarApiKey: "AIzaSyCvrYo5iz10VIQQ0LP75GFcI-v9LbhC6D0",
     events: {
       googleCalendarId:
-        "28516cb404c13f958c1b24a3e914b13efa359c71f39400b5ae457b0978b45838@group.calendar.google.com",
-    },
-    headerToolbar: {
-      left: "prev,next",
-      center: "title",
-      right: "timeGridWeek,timeGridDay", // user can switch between the two
+        "8eb5e628c7d3dce5aafd4347ac09c91e8321e92177622d67469fc9b4b1e2e276@group.calendar.google.com",
     },
     hiddenDays: [0, 6],
     buttonText: {
@@ -85,6 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ],
     displayEventTime: false,
+
+    windowResize: function () {
+      const mobile = isMobile();
+
+      if (mobile && calendar.view.type !== "listDay") {
+        calendar.changeView("listDay");
+        calendar.setOption("headerToolbar", mobileHeader); // Atualiza o cabeçalho para mobile
+      } else if (!mobile && calendar.view.type === "listDay") {
+        calendar.changeView("timeGridWeek");
+        calendar.setOption("headerToolbar", desktopHeader); // Atualiza o cabeçalho para desktop
+      }
+    },
   });
 
   calendar.render();
@@ -92,5 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper function to format dates for Google Calendar link
   function formatDate(date) {
     return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+  }
+
+  // Função para verificar se a tela é mobile
+  function isMobile() {
+    return window.innerWidth < 768; // Breakpoint de 768px
   }
 });

@@ -289,6 +289,19 @@ const speakers = {
       linkedin: "https://www.linkedin.com/in/bentomontenegro/",
     },
   },
+  "José Lacerda": {
+    photo: "./img/palestrantes/Jose-Lacerda.png",
+    title: "Ministrante",
+    abstract: "AI Staff engineer na Stone.",
+    events: [
+      {
+        title: "Minicurso - Modelos “Sistema 1” de IA",
+      },
+    ],
+    contact: {
+      linkedin: "https://www.linkedin.com/in/zelacerda/",
+    },
+  },
 };
 
 export { speakers };

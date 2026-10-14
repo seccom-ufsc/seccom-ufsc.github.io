@@ -227,13 +227,38 @@
             <div class="card-header">
               <!-- #region Nav Header -->
               <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
+                <li class="nav-item m-1" role="presentation">
+                  <!-- Deixamos apenas este como active e aria-selected="true" -->
                   <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Inscrição</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-maratona-tab" data-bs-toggle="pill" data-bs-target="#pills-maratona" type="button" role="tab" aria-controls="pills-maratona" aria-selected="false">Maratona de Programação</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-ketA-tab" data-bs-toggle="pill" data-bs-target="#pills-ketA" type="button" role="tab" aria-controls="pills-ketA" aria-selected="false">Minicurso Ket (Básico)</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-ketB-tab" data-bs-toggle="pill" data-bs-target="#pills-ketB" type="button" role="tab" aria-controls="pills-ketB" aria-selected="false">Minicurso Ket (Avançado)</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-comunicacao-tab" data-bs-toggle="pill" data-bs-target="#pills-comunicacao" type="button" role="tab" aria-controls="pills-comunicacao" aria-selected="false">Comunicação Quântica</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-git-tab" data-bs-toggle="pill" data-bs-target="#pills-git" type="button" role="tab" aria-controls="pills-git" aria-selected="false">Minicurso de Git</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <button class="nav-link" id="pills-latex-tab" data-bs-toggle="pill" data-bs-target="#pills-latex" type="button" role="tab" aria-controls="pills-latex" aria-selected="false">Minicurso de LaTeX</button>
+                </li>
+                <li class="nav-item m-1" role="presentation">
+                  <!-- Corrigido aria-controls para pills-arduino -->
+                  <button class="nav-link" id="pills-arduino-tab" data-bs-toggle="pill" data-bs-target="#pills-arduino" type="button" role="tab" aria-controls="pills-arduino" aria-selected="false">Minicurso de Arduino</button>
                 </li>
               </ul>
               <!-- #endregion Nav Header -->
             </div>
+            
             <div class="tab-content" id="pills-tabContent">
+              <!-- Deixamos apenas este com 'show active' -->
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                 <!-- #region Card Inscrição -->
                 <div class="card-body p-5">
@@ -251,13 +276,176 @@
                     <li>Preencha o formulário de inscrição, disponível no botão abaixo.</li>
                   </ol>
                   <div class="text-end mt-5">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform" class="btn btn-primary" target="_blank">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform" class="btn btn-primary text-white" target="_blank">
                       Quero me inscrever na SECCOM!
                     </a>
                   </div>
                 </div>
                 <!-- #endregion Card Inscrição -->
               </div>
+
+              <!-- Os demais ficam apenas com 'fade' -->
+              <div class="tab-pane fade" id="pills-maratona" role="tabpanel" aria-labelledby="pills-maratona-tab" tabindex="1">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Maratona de Programação</h5>
+                  <p class="card-text"></p>
+                  <p>
+                    <strong>Local:</strong> INE101 / INE314 / INE313
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar da Maratona de Programação SECCOM, crie um usuário para sua equipe no vJudge, pelo link: https://vjudge.net/ .</li>
+                    <li>Na hora de cadastrar o usuário, coloque o nome da equipe no Nickname. Após o cadastro, entre no grupo criado para a maratona, pelo link: https://vjudge.net/group/seccom?r=2eCsJGu7ijza4IrYIyZq . É por meio dele que a competição será realizada. Selecione a opção Apply/Join, para que sua equipe seja aprovada.</li>
+                    <li>Preencha as informações do formulário abaixo para confirmar a participação da sua equipe no evento.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/xxB7rQyK3J1T9CXB9" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever na Maratona!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-ketA" role="tabpanel" aria-labelledby="pills-ketA-tab" tabindex="2">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Minicurso de Ket (Básico)</h5>
+                  <p class="card-text">
+                    Neste minicurso, abordaremos os fundamentos da computação quântica, como qubits, superposição, emaranhamento e portas lógicas. Utilizando a biblioteca Ket desenvolvida dentro da UFSC, você vai sair da teoria para construir, simular e executar seus primeiros circuitos quânticos.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> INE 313
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/xE59iUu2XLzcSDij8" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-ketB" role="tabpanel" aria-labelledby="pills-ketB-tab" tabindex="3">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Minicurso de Ket (Avançado)</h5>
+                  <p class="card-text">
+                    Neste minicurso, aprenderemos na prática como desenvolver soluções para problemas de otimização utilizando computação quântica. Veremos como modelar esses cenários usando a plataforma de programação quântica Ket e exploraremos a aplicação do algoritmo QAOA (Quantum Approximate Optimization Algorithm) para resolvê-los. O curso abordará problemas como Max-Cut, coloração de grafos e otimização de portfólios financeiros, explorando diferentes técnicas para a construção das soluções quânticas.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> LIICT 5
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/xE59iUu2XLzcSDij8" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-comunicacao" role="tabpanel" aria-labelledby="pills-comunicacao-tab" tabindex="4">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Comunicação Quântica</h5>
+                  <p class="card-text">
+                    A comunicação quântica é uma área que estuda como informação pode ser transmitida com o uso de partículas que obedeçam as leis da mecânica quântica, e de que maneiras tais leis podem ser aproveitadas para aprimorar os métodos de comunicação que existem hoje. Neste minicurso se aprenderá como executar os cinco principais protocolos de comunicação quântica da literatura, junto dos conceitos de computação e teoria da informação quântica essenciais para o entendimento de cada um.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> INE 101
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/Wq39Fq5PS92QHQWz8" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-git" role="tabpanel" aria-labelledby="pills-git-tab" tabindex="5">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Minicurso de Git</h5>
+                  <p class="card-text">
+                    No dia 20/10, a SECCOM vai trazer para a comunidade um minicurso introdutório de Git, a ferramenta de controle de versão mais utilizada no desenvolvimento de software. Você aprenderá os conceitos fundamentais para organizar seus projetos, acompanhar alterações no código e colaborar com outras pessoas de forma eficiente.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> INE 313
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/48EyVVqGyGaKbs7K9" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-latex" role="tabpanel" aria-labelledby="pills-latex-tab" tabindex="6">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Minicurso de LaTeX</h5>
+                  <p class="card-text">
+                    Já sofreu com formatação ABNT? Como escrever um artigo? Se não sofreu ainda, alguma hora você vai, por isso, venha aprende o básico de LaTeX nesse minicurso introdutório!
+                  </p>
+                  <p>
+                    <strong>Local:</strong> INE 313
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/sM7HgSm8djHHzBPL8" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-arduino" role="tabpanel" aria-labelledby="pills-arduino-tab" tabindex="7">
+                <div class="card-body p-5">
+                  <h5 class="card-title mb-4">Minicurso de Arduino</h5>
+                  <p class="card-text">
+                    O minicurso de Arduino oferece uma oportunidade para mergulhar no mundo da eletrônica e programação. O encontro busca contextualizar o dispositivo, explorando sua história e apresentando exemplos práticos focados no universo da computação. O objetivo é fornecer uma base sólida para que os participantes possam começar a criar seus próprios projetos.
+                  </p>
+                  <p>
+                    <strong>Local:</strong> LIICT 2
+                  </p>
+                  <p>
+                    <strong>O que é necessário para participar?</strong>
+                  </p>
+                  <ol>
+                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
+                  </ol>
+                  <div class="text-end mt-5">
+                    <a href="https://forms.gle/8yqBDojsy1rU5mrGA" class="btn btn-primary text-white" target="_blank">
+                      Quero me inscrever no minicurso!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 

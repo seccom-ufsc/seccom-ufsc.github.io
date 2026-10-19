@@ -302,6 +302,20 @@ const speakers = {
       linkedin: "https://www.linkedin.com/in/zelacerda/",
     },
   },
+  "Gustavo de Castro Biage": {
+    photo: "./img/palestrantes/Gustavo-de-Castro-Biage.png",
+    title: "Ministrante",
+    abstract: "Pesquisador na CISSA/CESAR.",
+    events: [
+      {
+        title:
+          "Minicurso - Códigos corretores de erros e criptografia anamórfica: comunicação segura na existência de um ditador quântico",
+      },
+    ],
+    contact: {
+      linkedin: "https://www.linkedin.com/in/gustavobiage/",
+    },
+  },
 };
 
 export { speakers };

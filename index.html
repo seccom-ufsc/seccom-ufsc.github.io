@@ -1,548 +1,972 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SECCOM 2026</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SECCOM 2026</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/main.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/style.css" />
 
-  <link rel="icon" type="image/x-icon" href="./img/logo.png">
-  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/main.min.css' rel='stylesheet' />
-  <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Full Calendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.15/index.global.min.js"></script>
 
-  <!-- Full Calendar -->
-  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.15/index.global.min.js'></script>
+    <!-- Carousel -->
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Carousel -->
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="script/matrix.js" defer></script>
+    <script src="script/calendar.js" defer></script>
+    <script src="script/speakersCarousel.js" type="module" defer></script>
+  </head>
 
-  <script src="script/matrix.js" defer></script>
-  <script src="script/calendar.js" defer></script>
-  <script src="script/speakersCarousel.js" type="module" defer></script>
-</head>
-
-<body>
-  <!-- #region Header -->
-  <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #3f79e9;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <div class="d-flex align-items-center">
-          <img src="img/logo.png" alt="Logo" height="48" class="d-inline-block align-text-top">
-          <span style="text-shadow: -2px 3.5px 1px rgba(0, 0, 0, 1);">SECCOM</span>
-        </div>
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav me-4 gap-2">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#program">Programação</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#speakers">Palestrantes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#eventos">Formulários</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contato">Contato</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Trocar o link do botão para o form correto-->
-      <div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform" class="btn btn-primary">Inscreva-se</a>
-      </div>
-
-    </div>
-  </nav>
-  <!-- #endregion -->
-
-  <div class="aurora-gradient"></div>
-
-  <!-- <canvas id="canv"></canvas> -->
-  <main data-bs-spy="scroll" data-bs-target="#navbarNav">
-    <!-- #region INICIO -->
-    <section id="inicio" class="container">
-      <div class="row" style="height: 100%;">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8 d-flex p-0 flex-column justify-content-around">
-          <div></div>
-          <div>
-            <h1 class="display-1 d-flex flex-wrap justify-content-between" style="text-shadow: -5px 8px 1px rgba(0, 0, 0, 1);">
-              <span>SECCOM_</span><span class="text-primary-emphasis">2026</span>
-            </h1>
-            <!-- Trocar data aqui -->
-            <p class="lead">
-              Semana Acadêmica da Computação e Sistemas<br>
-              De 19 a 23 de Outubro
-            </p>
-            <p>
-              A SECCOM é um evento acadêmico que visa incrementar a experiência universitária das graduações em Ciência da Computação e Sistemas de Informação, trazendo palestras e oficinas de conteúdos além dos vistos durante a graduação. O tema desta edição é <br><span class="text-primary-emphasis">Computação Quântica</span>.
-            </p>
-            <!-- <p>
-              Você pode assistir as transmissões ao vivo no <a href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw" target="_blank">canal oficial da SECCOM no YouTube</a>.
-            </p> -->
+  <body>
+    <!-- #region Header -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="background-color: #3f79e9"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <div class="d-flex align-items-center">
+            <img
+              src="img/logo.png"
+              alt="Logo"
+              height="48"
+              class="d-inline-block align-text-top"
+            />
+            <span style="text-shadow: -2px 3.5px 1px rgba(0, 0, 0, 1)"
+              >SECCOM</span
+            >
           </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <!-- Trocar link do formulário aqui -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform" class="btn btn-primary btn-lg">Inscreva-se</a>
-          </div>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-4 gap-2">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#inicio"
+                >Início</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#program">Programação</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#speakers">Palestrantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#eventos">Formulários</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contato">Contato</a>
+            </li>
+          </ul>
         </div>
-        <div class="col-lg-2"></div>
-      </div class="row">
-    </section>
+
+        <!-- Trocar o link do botão para o form correto-->
+        <div>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform"
+            class="btn btn-primary"
+            >Inscreva-se</a
+          >
+        </div>
+      </div>
+    </nav>
     <!-- #endregion -->
 
-    <!-- #region PROGRAMACAO -->
-    <section id="program" class="container mb-5 pb-3">
+    <div class="aurora-gradient"></div>
 
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-          <h2>Programação</h2>
+    <!-- <canvas id="canv"></canvas> -->
+    <main data-bs-spy="scroll" data-bs-target="#navbarNav">
+      <!-- #region INICIO -->
+      <section id="inicio" class="container">
+        <div class="row" style="height: 100%">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8 d-flex p-0 flex-column justify-content-around">
+            <div></div>
+            <div>
+              <h1
+                class="display-1 d-flex flex-wrap justify-content-between"
+                style="text-shadow: -5px 8px 1px rgba(0, 0, 0, 1)"
+              >
+                <span>SECCOM_</span
+                ><span class="text-primary-emphasis">2026</span>
+              </h1>
+              <!-- Trocar data aqui -->
+              <p class="lead">
+                Semana Acadêmica da Computação e Sistemas<br />
+                De 19 a 23 de Outubro
+              </p>
+              <p>
+                A SECCOM é um evento acadêmico que visa incrementar a
+                experiência universitária das graduações em Ciência da
+                Computação e Sistemas de Informação, trazendo palestras e
+                oficinas de conteúdos além dos vistos durante a graduação. O
+                tema desta edição é <br /><span class="text-primary-emphasis"
+                  >Computação Quântica</span
+                >.
+              </p>
+              <!-- <p>
+              Você pode assistir as transmissões ao vivo no <a href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw" target="_blank">canal oficial da SECCOM no YouTube</a>.
+            </p> -->
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <!-- Trocar link do formulário aqui -->
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform"
+                class="btn btn-primary btn-lg"
+                >Inscreva-se</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-2"></div>
         </div>
-        <div id="calendar" class="rounded p-3">
-          <!-- Calendar -->
-        </div>
+      </section>
+      <!-- #endregion -->
 
-        <!-- Bootstrap Modal -->
-        <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+      <!-- #region PROGRAMACAO -->
+      <section id="program" class="container mb-5 pb-3">
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <h2>Programação</h2>
+          </div>
+          <div id="calendar" class="rounded p-3">
+            <!-- Calendar -->
+          </div>
+
+          <!-- Bootstrap Modal -->
+          <div
+            class="modal fade"
+            id="eventModal"
+            tabindex="-1"
+            aria-labelledby="eventModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title" id="eventModalLabel">
+                    Detalhes do evento
+                  </h6>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div id="modal-event-title">
+                    <!-- <div class="mb-2 mt-3"> -->
+                    <!-- <strong>Título</strong> -->
+                    <h3 id="section-title"></h3>
+                    <!-- </div> -->
+                  </div>
+                  <div id="modal-event-description">
+                    <div class="mb-2 mt-3">
+                      <strong>Descrição</strong>
+                    </div>
+                    <div id="section-description" class="event-section"></div>
+                  </div>
+                  <div id="modal-event-location">
+                    <div class="mb-2 mt-3">
+                      <strong>Local</strong>
+                    </div>
+                    <div id="section-location" class="event-section"></div>
+                  </div>
+                  <div class="mb-2 mt-3">
+                    <div id="modal-event-start">
+                      <strong>Início: </strong><span id="section-start"></span>
+                    </div>
+                    <div id="modal-event-end">
+                      <strong>Fim: </strong><span id="section-end"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Fechar
+                  </button>
+                  <a
+                    href="#"
+                    id="add-to-calendar"
+                    class="btn btn-primary"
+                    target="_blank"
+                    >Adicionar ao meu calendário</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- #endregion -->
+
+      <!-- #region PALESTRANTES -->
+      <section id="speakers" class="container mb-5 pb-3">
+        <h2>Palestrantes</h2>
+        <div id="carrossel" class="carrossel"></div>
+        <div
+          class="modal modal-lg fade"
+          id="speakerModal"
+          tabindex="-1"
+          aria-labelledby="speakerModalLabel"
+          aria-hidden="true"
+        >
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h6 class="modal-title" id="eventModalLabel">Detalhes do evento</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="speakerModalLabel">
+                  Modal title
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
               <div class="modal-body">
-                <div id="modal-event-title">
-                  <!-- <div class="mb-2 mt-3"> -->
-                  <!-- <strong>Título</strong> -->
-                  <h3 id="section-title"></h3>
-                  <!-- </div> -->
+                <div class="d-flex justify-content-center">
+                  <img id="modal-speaker-photo" />
                 </div>
-                <div id="modal-event-description">
+                <div id="modal-speaker-abstract">
                   <div class="mb-2 mt-3">
-                    <strong>Descrição</strong>
+                    <strong>Sobre mim</strong>
                   </div>
-                  <div id="section-description" class="event-section"></div>
+                  <div id="speaker-abstract"></div>
                 </div>
-                <div id="modal-event-location">
+                <div id="modal-speaker-lectures">
                   <div class="mb-2 mt-3">
-                    <strong>Local</strong>
+                    <strong>Eventos</strong>
                   </div>
-                  <div id="section-location" class="event-section"></div>
-                </div>
-                <div class="mb-2 mt-3">
-                  <div id="modal-event-start">
-                    <strong>Início: </strong><span id="section-start"></span>
-                  </div>
-                  <div id="modal-event-end">
-                    <strong>Fim: </strong><span id="section-end"></span>
-                  </div>
+                  <ul id="speaker-events"></ul>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <a href="#" id="add-to-calendar" class="btn btn-primary" target="_blank">Adicionar ao meu calendário</a>
+              <div id="modal-footer" class="modal-footer">
+                <p style="margin-right: auto"><strong>Contatos:</strong></p>
+                <div id="contact-list" class="contact-list"></div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+      <!-- #endregion -->
 
-      </div>
-    </section>
-    <!-- #endregion -->
+      <!-- Adicionar/Remover cards de eventos aqui -->
+      <!-- #region EVENTOS -->
+      <section id="eventos" class="container d-flex align-items-center">
+        <div class="row">
+          <!-- <div class="col-lg-2"></div> -->
+          <div class="col-lg">
+            <h2>Formulários</h2>
 
-    <!-- #region PALESTRANTES -->
-    <section id="speakers" class="container mb-5 pb-3">
-      <h2>Palestrantes</h2>
-      <div id="carrossel" class="carrossel"></div>
-      <div class="modal modal-lg fade" id="speakerModal" tabindex="-1" aria-labelledby="speakerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="speakerModalLabel">
-                Modal title
-              </h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="d-flex justify-content-center">
-                <img id="modal-speaker-photo" />
+            <p class="mb-4">
+              Abaixo são listados os eventos da SECCOM 2026 com
+              <i>links</i> para formulários de inscrição. Clique para ver suas
+              descrições e participe!
+            </p>
+
+            <div class="card">
+              <div class="card-header">
+                <!-- #region Nav Header -->
+                <ul
+                  class="nav nav-pills nav-fill"
+                  id="pills-tab"
+                  role="tablist"
+                >
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="pills-home-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-home"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-home"
+                      aria-selected="true"
+                    >
+                      Inscrição
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-maratona-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-maratona"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-maratona"
+                      aria-selected="false"
+                    >
+                      Maratona de Programação
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-ketA-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-ketA"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-ketA"
+                      aria-selected="false"
+                    >
+                      Minicurso Ket (Básico)
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-ketB-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-ketB"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-ketB"
+                      aria-selected="false"
+                    >
+                      Minicurso Ket (Avançado)
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-comunicacao-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-comunicacao"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-comunicacao"
+                      aria-selected="false"
+                    >
+                      Comunicação Quântica
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-git-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-git"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-git"
+                      aria-selected="false"
+                    >
+                      Minicurso de Git
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-latex-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-latex"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-latex"
+                      aria-selected="false"
+                    >
+                      Minicurso de LaTeX
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-arduino-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-arduino"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-arduino"
+                      aria-selected="false"
+                    >
+                      Minicurso de Arduino
+                    </button>
+                  </li>
+                  <li class="nav-item m-1" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-stone-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-stone"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-stone"
+                      aria-selected="false"
+                    >
+                      Minicurso Stone
+                    </button>
+                  </li>
+                </ul>
+                <!-- #endregion Nav Header -->
               </div>
-              <div id="modal-speaker-abstract">
-                <div class="mb-2 mt-3">
-                  <strong>Sobre mim</strong>
+
+              <div class="tab-content" id="pills-tabContent">
+                <!-- Deixamos apenas este com 'show active' -->
+                <div
+                  class="tab-pane fade show active"
+                  id="pills-home"
+                  role="tabpanel"
+                  aria-labelledby="pills-home-tab"
+                  tabindex="0"
+                >
+                  <!-- #region Card Inscrição -->
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Inscrição na SECCOM</h5>
+                    <p class="card-text">
+                      Informe seus dados para receber o certificado de
+                      participação da SECCOM. Esse certificado será emitido
+                      apenas caso você realmente participe dos eventos.
+                    </p>
+                    <p><strong>Local:</strong> Dependências do INE/CTC.</p>
+                    <p>
+                      <strong
+                        >O que é necessário para participar da SECCOM?</strong
+                      >
+                    </p>
+                    <ol>
+                      <li>
+                        Preencha o formulário de inscrição, disponível no botão
+                        abaixo.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever na SECCOM!
+                      </a>
+                    </div>
+                  </div>
+                  <!-- #endregion Card Inscrição -->
                 </div>
-                <div id="speaker-abstract"></div>
-              </div>
-              <div id="modal-speaker-lectures">
-                <div class="mb-2 mt-3">
-                  <strong>Eventos</strong>
+
+                <!-- Os demais ficam apenas com 'fade' -->
+                <div
+                  class="tab-pane fade"
+                  id="pills-maratona"
+                  role="tabpanel"
+                  aria-labelledby="pills-maratona-tab"
+                  tabindex="1"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Maratona de Programação</h5>
+                    <p class="card-text"></p>
+                    <p><strong>Local:</strong> INE101 / INE314 / INE313</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar da Maratona de Programação SECCOM, crie
+                        um usuário para sua equipe no vJudge, pelo link:
+                        https://vjudge.net/ .
+                      </li>
+                      <li>
+                        Na hora de cadastrar o usuário, coloque o nome da equipe
+                        no Nickname. Após o cadastro, entre no grupo criado para
+                        a maratona, pelo link:
+                        https://vjudge.net/group/seccom?r=2eCsJGu7ijza4IrYIyZq .
+                        É por meio dele que a competição será realizada.
+                        Selecione a opção Apply/Join, para que sua equipe seja
+                        aprovada.
+                      </li>
+                      <li>
+                        Preencha as informações do formulário abaixo para
+                        confirmar a participação da sua equipe no evento.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/xxB7rQyK3J1T9CXB9"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever na Maratona!
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <ul id="speaker-events"></ul>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-ketA"
+                  role="tabpanel"
+                  aria-labelledby="pills-ketA-tab"
+                  tabindex="2"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso de Ket (Básico)</h5>
+                    <p class="card-text">
+                      Neste minicurso, abordaremos os fundamentos da computação
+                      quântica, como qubits, superposição, emaranhamento e
+                      portas lógicas. Utilizando a biblioteca Ket desenvolvida
+                      dentro da UFSC, você vai sair da teoria para construir,
+                      simular e executar seus primeiros circuitos quânticos.
+                    </p>
+                    <p><strong>Local:</strong> INE 313</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/xE59iUu2XLzcSDij8"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-ketB"
+                  role="tabpanel"
+                  aria-labelledby="pills-ketB-tab"
+                  tabindex="3"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso de Ket (Avançado)</h5>
+                    <p class="card-text">
+                      Neste minicurso, aprenderemos na prática como desenvolver
+                      soluções para problemas de otimização utilizando
+                      computação quântica. Veremos como modelar esses cenários
+                      usando a plataforma de programação quântica Ket e
+                      exploraremos a aplicação do algoritmo QAOA (Quantum
+                      Approximate Optimization Algorithm) para resolvê-los. O
+                      curso abordará problemas como Max-Cut, coloração de grafos
+                      e otimização de portfólios financeiros, explorando
+                      diferentes técnicas para a construção das soluções
+                      quânticas.
+                    </p>
+                    <p><strong>Local:</strong> LIICT 5</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/isXW2QqMiDjrrMbZ9"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-comunicacao"
+                  role="tabpanel"
+                  aria-labelledby="pills-comunicacao-tab"
+                  tabindex="4"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Comunicação Quântica</h5>
+                    <p class="card-text">
+                      A comunicação quântica é uma área que estuda como
+                      informação pode ser transmitida com o uso de partículas
+                      que obedeçam as leis da mecânica quântica, e de que
+                      maneiras tais leis podem ser aproveitadas para aprimorar
+                      os métodos de comunicação que existem hoje. Neste
+                      minicurso se aprenderá como executar os cinco principais
+                      protocolos de comunicação quântica da literatura, junto
+                      dos conceitos de computação e teoria da informação
+                      quântica essenciais para o entendimento de cada um.
+                    </p>
+                    <p><strong>Local:</strong> INE 101</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/Wq39Fq5PS92QHQWz8"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-git"
+                  role="tabpanel"
+                  aria-labelledby="pills-git-tab"
+                  tabindex="5"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso de Git</h5>
+                    <p class="card-text">
+                      No dia 20/10, a SECCOM vai trazer para a comunidade um
+                      minicurso introdutório de Git, a ferramenta de controle de
+                      versão mais utilizada no desenvolvimento de software. Você
+                      aprenderá os conceitos fundamentais para organizar seus
+                      projetos, acompanhar alterações no código e colaborar com
+                      outras pessoas de forma eficiente.
+                    </p>
+                    <p><strong>Local:</strong> INE 313</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/48EyVVqGyGaKbs7K9"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-latex"
+                  role="tabpanel"
+                  aria-labelledby="pills-latex-tab"
+                  tabindex="6"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso de LaTeX</h5>
+                    <p class="card-text">
+                      Já sofreu com formatação ABNT? Como escrever um artigo? Se
+                      não sofreu ainda, alguma hora você vai, por isso, venha
+                      aprende o básico de LaTeX nesse minicurso introdutório!
+                    </p>
+                    <p><strong>Local:</strong> INE 313</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/sM7HgSm8djHHzBPL8"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-arduino"
+                  role="tabpanel"
+                  aria-labelledby="pills-arduino-tab"
+                  tabindex="7"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso de Arduino</h5>
+                    <p class="card-text">
+                      O minicurso de Arduino oferece uma oportunidade para
+                      mergulhar no mundo da eletrônica e programação. O encontro
+                      busca contextualizar o dispositivo, explorando sua
+                      história e apresentando exemplos práticos focados no
+                      universo da computação. O objetivo é fornecer uma base
+                      sólida para que os participantes possam começar a criar
+                      seus próprios projetos.
+                    </p>
+                    <p><strong>Local:</strong> LIICT 2</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://forms.gle/8yqBDojsy1rU5mrGA"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-stone"
+                  role="tabpanel"
+                  aria-labelledby="pills-stone-tab"
+                  tabindex="8"
+                >
+                  <div class="card-body p-5">
+                    <h5 class="card-title mb-4">Minicurso Stone</h5>
+                    <p class="card-text">
+                      O minicurso apresentará os modelos do tipo “Sistema 1”,
+                      uma nova abordagem de IA voltada a decisões rápidas e
+                      estruturadas. Exploraremos seu funcionamento, suas
+                      diferenças em relação aos LLMs tradicionais e suas
+                      aplicações práticas, com uma atividade de prototipação de
+                      uma aplicação de atendimento.
+                    </p>
+                    <p><strong>Local:</strong> INE 101</p>
+                    <p>
+                      <strong>O que é necessário para participar?</strong>
+                    </p>
+                    <ol>
+                      <li>
+                        Para participar, basta preencher o formulário de
+                        inscrição. A participação é totalmente gratuita, mas é
+                        necessário levar seu computador pessoal.
+                      </li>
+                    </ol>
+                    <div class="text-end mt-5">
+                      <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScwO8rXaex4RdqsA2UbEm6LzxEbtzbxBLVmvRN8tNCK1wm8jg/viewform"
+                        class="btn btn-primary text-white"
+                        target="_blank"
+                      >
+                        Quero me inscrever no minicurso!
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="modal-footer" class="modal-footer">
-              <p style="margin-right: auto;"><strong>Contatos:</strong></p>
-              <div id="contact-list" class="contact-list"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- #endregion -->
+      </section>
+      <!-- #endregion EVENTOS -->
 
-    <!-- Adicionar/Remover cards de eventos aqui -->
-    <!-- #region EVENTOS -->
-    <section id="eventos" class="container d-flex align-items-center">
-      <div class="row">
-        <!-- <div class="col-lg-2"></div> -->
-        <div class="col-lg">
-          <h2>Formulários</h2>
+      <!-- #region PATROCINADORES -->
+      <section
+        id="contato"
+        class="container d-flex flex-column justify-content-center align-items-center"
+        style="min-height: 30svh"
+      >
+        <h2>Patrocinadores</h2>
 
-          <p class="mb-4">
-            Abaixo são listados os eventos da SECCOM 2026 com <i>links</i> para formulários de inscrição. Clique para ver suas descrições e participe!
-          </p>
-
-          <div class="card">
-            <div class="card-header">
-              <!-- #region Nav Header -->
-              <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-                <li class="nav-item m-1" role="presentation">
-                  <!-- Deixamos apenas este como active e aria-selected="true" -->
-                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Inscrição</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-maratona-tab" data-bs-toggle="pill" data-bs-target="#pills-maratona" type="button" role="tab" aria-controls="pills-maratona" aria-selected="false">Maratona de Programação</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-ketA-tab" data-bs-toggle="pill" data-bs-target="#pills-ketA" type="button" role="tab" aria-controls="pills-ketA" aria-selected="false">Minicurso Ket (Básico)</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-ketB-tab" data-bs-toggle="pill" data-bs-target="#pills-ketB" type="button" role="tab" aria-controls="pills-ketB" aria-selected="false">Minicurso Ket (Avançado)</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-comunicacao-tab" data-bs-toggle="pill" data-bs-target="#pills-comunicacao" type="button" role="tab" aria-controls="pills-comunicacao" aria-selected="false">Comunicação Quântica</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-git-tab" data-bs-toggle="pill" data-bs-target="#pills-git" type="button" role="tab" aria-controls="pills-git" aria-selected="false">Minicurso de Git</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <button class="nav-link" id="pills-latex-tab" data-bs-toggle="pill" data-bs-target="#pills-latex" type="button" role="tab" aria-controls="pills-latex" aria-selected="false">Minicurso de LaTeX</button>
-                </li>
-                <li class="nav-item m-1" role="presentation">
-                  <!-- Corrigido aria-controls para pills-arduino -->
-                  <button class="nav-link" id="pills-arduino-tab" data-bs-toggle="pill" data-bs-target="#pills-arduino" type="button" role="tab" aria-controls="pills-arduino" aria-selected="false">Minicurso de Arduino</button>
-                </li>
-              </ul>
-              <!-- #endregion Nav Header -->
-            </div>
-            
-            <div class="tab-content" id="pills-tabContent">
-              <!-- Deixamos apenas este com 'show active' -->
-              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                <!-- #region Card Inscrição -->
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Inscrição na SECCOM</h5>
-                  <p class="card-text">
-                    Informe seus dados para receber o certificado de participação da SECCOM. Esse certificado será emitido apenas caso você realmente participe dos eventos.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> Dependências do INE/CTC.
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar da SECCOM?</strong>
-                  </p>
-                  <ol>
-                    <li>Preencha o formulário de inscrição, disponível no botão abaixo.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffh7WB26d0FbbJhvXB5CvksSkSqVCHrtc__AN-aCSA7TkZcA/viewform" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever na SECCOM!
-                    </a>
-                  </div>
-                </div>
-                <!-- #endregion Card Inscrição -->
-              </div>
-
-              <!-- Os demais ficam apenas com 'fade' -->
-              <div class="tab-pane fade" id="pills-maratona" role="tabpanel" aria-labelledby="pills-maratona-tab" tabindex="1">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Maratona de Programação</h5>
-                  <p class="card-text"></p>
-                  <p>
-                    <strong>Local:</strong> INE101 / INE314 / INE313
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar da Maratona de Programação SECCOM, crie um usuário para sua equipe no vJudge, pelo link: https://vjudge.net/ .</li>
-                    <li>Na hora de cadastrar o usuário, coloque o nome da equipe no Nickname. Após o cadastro, entre no grupo criado para a maratona, pelo link: https://vjudge.net/group/seccom?r=2eCsJGu7ijza4IrYIyZq . É por meio dele que a competição será realizada. Selecione a opção Apply/Join, para que sua equipe seja aprovada.</li>
-                    <li>Preencha as informações do formulário abaixo para confirmar a participação da sua equipe no evento.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/xxB7rQyK3J1T9CXB9" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever na Maratona!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-ketA" role="tabpanel" aria-labelledby="pills-ketA-tab" tabindex="2">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Minicurso de Ket (Básico)</h5>
-                  <p class="card-text">
-                    Neste minicurso, abordaremos os fundamentos da computação quântica, como qubits, superposição, emaranhamento e portas lógicas. Utilizando a biblioteca Ket desenvolvida dentro da UFSC, você vai sair da teoria para construir, simular e executar seus primeiros circuitos quânticos.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> INE 313
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/xE59iUu2XLzcSDij8" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-ketB" role="tabpanel" aria-labelledby="pills-ketB-tab" tabindex="3">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Minicurso de Ket (Avançado)</h5>
-                  <p class="card-text">
-                    Neste minicurso, aprenderemos na prática como desenvolver soluções para problemas de otimização utilizando computação quântica. Veremos como modelar esses cenários usando a plataforma de programação quântica Ket e exploraremos a aplicação do algoritmo QAOA (Quantum Approximate Optimization Algorithm) para resolvê-los. O curso abordará problemas como Max-Cut, coloração de grafos e otimização de portfólios financeiros, explorando diferentes técnicas para a construção das soluções quânticas.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> LIICT 5
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/isXW2QqMiDjrrMbZ9" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-comunicacao" role="tabpanel" aria-labelledby="pills-comunicacao-tab" tabindex="4">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Comunicação Quântica</h5>
-                  <p class="card-text">
-                    A comunicação quântica é uma área que estuda como informação pode ser transmitida com o uso de partículas que obedeçam as leis da mecânica quântica, e de que maneiras tais leis podem ser aproveitadas para aprimorar os métodos de comunicação que existem hoje. Neste minicurso se aprenderá como executar os cinco principais protocolos de comunicação quântica da literatura, junto dos conceitos de computação e teoria da informação quântica essenciais para o entendimento de cada um.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> INE 101
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/Wq39Fq5PS92QHQWz8" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-git" role="tabpanel" aria-labelledby="pills-git-tab" tabindex="5">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Minicurso de Git</h5>
-                  <p class="card-text">
-                    No dia 20/10, a SECCOM vai trazer para a comunidade um minicurso introdutório de Git, a ferramenta de controle de versão mais utilizada no desenvolvimento de software. Você aprenderá os conceitos fundamentais para organizar seus projetos, acompanhar alterações no código e colaborar com outras pessoas de forma eficiente.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> INE 313
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/48EyVVqGyGaKbs7K9" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-latex" role="tabpanel" aria-labelledby="pills-latex-tab" tabindex="6">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Minicurso de LaTeX</h5>
-                  <p class="card-text">
-                    Já sofreu com formatação ABNT? Como escrever um artigo? Se não sofreu ainda, alguma hora você vai, por isso, venha aprende o básico de LaTeX nesse minicurso introdutório!
-                  </p>
-                  <p>
-                    <strong>Local:</strong> INE 313
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/sM7HgSm8djHHzBPL8" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-arduino" role="tabpanel" aria-labelledby="pills-arduino-tab" tabindex="7">
-                <div class="card-body p-5">
-                  <h5 class="card-title mb-4">Minicurso de Arduino</h5>
-                  <p class="card-text">
-                    O minicurso de Arduino oferece uma oportunidade para mergulhar no mundo da eletrônica e programação. O encontro busca contextualizar o dispositivo, explorando sua história e apresentando exemplos práticos focados no universo da computação. O objetivo é fornecer uma base sólida para que os participantes possam começar a criar seus próprios projetos.
-                  </p>
-                  <p>
-                    <strong>Local:</strong> LIICT 2
-                  </p>
-                  <p>
-                    <strong>O que é necessário para participar?</strong>
-                  </p>
-                  <ol>
-                    <li>Para participar, basta preencher o formulário de inscrição. A participação é totalmente gratuita, mas é necessário levar seu computador pessoal.</li>
-                  </ol>
-                  <div class="text-end mt-5">
-                    <a href="https://forms.gle/8yqBDojsy1rU5mrGA" class="btn btn-primary text-white" target="_blank">
-                      Quero me inscrever no minicurso!
-                    </a>
-                  </div>
-                </div>
-              </div>
-
+        <!-- Primeira linha de patrocinadores -->
+        <div class="mt-4">
+          <div
+            class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center"
+          >
+            <div
+              class="col d-flex justify-content-center"
+              style="max-width: 900px"
+            >
+              <a href="https://www.instagram.com/calicoufsc/" target="_blank">
+                <img
+                  src="img/patrocinio/calico.png"
+                  alt="CALICO"
+                  class="img-fluid img-thumbnail"
+                />
+              </a>
             </div>
           </div>
-
         </div>
-      </div>
-    </section>
-    <!-- #endregion EVENTOS -->
 
-    <!-- #region PATROCINADORES -->
-    <section id="contato" class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 30svh;">
-      <h2>Patrocinadores</h2>
-
-      <!-- Primeira linha de patrocinadores -->
-      <div class="mt-4">
-        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
-          <div class="col d-flex justify-content-center" style="max-width: 900px;">
-            <a href="https://www.instagram.com/calicoufsc/" target="_blank">
-              <img src="img/patrocinio/calico.png" alt="CALICO" class="img-fluid img-thumbnail">
-            </a>
+        <!-- Segunda linha de patrocinadores -->
+        <div
+          class="row row-cols-1 row-cols-md-3 g-4 mt-2 justify-content-center"
+        >
+          <div
+            class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center"
+          >
+            <div
+              class="col d-flex justify-content-center"
+              style="max-width: 900px; width: 250px"
+            >
+              <a href="https://www.stone.com.br" target="_blank">
+                <img
+                  src="img/patrocinio/Stone.png"
+                  alt="STONE"
+                  class="img-fluid img-thumbnail"
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center"
+          >
+            <div
+              class="col d-flex justify-content-center"
+              style="max-width: 900px"
+            >
+              <a href="https://www.cesar.school" target="_blank">
+                <img
+                  src="img/patrocinio/School_Branca.png"
+                  alt="CESAR SCHOOL"
+                  class="img-fluid img-thumbnail"
+                />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+      <!-- #endregion -->
 
-      <!-- Segunda linha de patrocinadores -->
-      <div class="row row-cols-1 row-cols-md-3 g-4 mt-2 justify-content-center">
-        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
-          <div class="col d-flex justify-content-center" style="max-width: 900px; width: 250px;">
-            <a href="https://www.stone.com.br" target="_blank">
-              <img src="img/patrocinio/Stone.png" alt="STONE" class="img-fluid img-thumbnail">
-            </a>
-          </div>
+      <!-- #region CONTATO -->
+      <section
+        id="contato"
+        class="container d-flex flex-column justify-content-center"
+        style="min-height: 30svh"
+      >
+        <h2>Quer falar com a gente?</h2>
+        <div class="contact-row">
+          <a href="https://www.facebook.com/seccom.ufsc" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-facebook"></i>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/seccom.ufsc/" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-instagram"></i>
+            </div>
+          </a>
+          <a href="mailto:seccom.ufsc@gmail.com" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+          </a>
+          <a href="https://github.com/seccom-ufsc/" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-github"></i>
+            </div>
+          </a>
+          <a href="https://discord.gg/zTmGqsh" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-discord"></i>
+            </div>
+          </a>
+          <a href="https://t.me/seccomufsc" target="_blank">
+            <div class="contact-card">
+              <i class="bi bi-telegram"></i>
+            </div>
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw"
+            target="_blank"
+          >
+            <div class="contact-card">
+              <i class="bi bi-youtube"></i>
+            </div>
+          </a>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-center">
-          <div class="col d-flex justify-content-center" style="max-width: 900px;">
-            <a href="https://www.cesar.school" target="_blank">
-              <img src="img/patrocinio/School_Branca.png" alt="CESAR SCHOOL" class="img-fluid img-thumbnail">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- #endregion -->
+      </section>
+      <!-- #endregion -->
+    </main>
 
-
-    <!-- #region CONTATO -->
-    <section id="contato" class="container d-flex flex-column justify-content-center" style="min-height: 30svh;">
-      <h2>Quer falar com a gente?</h2>
-      <div class="contact-row">
-
-        <a href="https://www.facebook.com/seccom.ufsc" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-facebook"></i>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/seccom.ufsc/" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-instagram"></i>
-          </div>
-        </a>
-        <a href="mailto:seccom.ufsc@gmail.com" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-envelope-fill"></i>
-          </div>
-        </a>
-        <a href="https://github.com/seccom-ufsc/" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-github"></i>
-          </div>
-        </a>
-        <a href="https://discord.gg/zTmGqsh" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-discord"></i>
-          </div>
-        </a>
-        <a href="https://t.me/seccomufsc" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-telegram"></i>
-          </div>
-        </a>
-        <a href="https://www.youtube.com/channel/UCva2-CmrvppJlf8jSAK61vw" target="_blank">
-          <div class="contact-card">
-            <i class="bi bi-youtube"></i>
-          </div>
-        </a>
-
-      </div>
-    </section>
-    <!-- #endregion -->
-  </main>
-
-  <footer></footer>
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="slick/slick.js"></script>
-</body>
-
+    <footer></footer>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script type="text/javascript" src="slick/slick.js"></script>
+  </body>
 </html>
